@@ -19,9 +19,9 @@ AUTH0_AUDIENCE=your-auth0-identifier
 JWT_ISSUER_URI=your-jwt-issuer-uri
 ```
 
-3Run the application
+3. Run the application
 ```shell
 mvn spring-boot:run
 ```
 
-4Go to http://localhost:8091
+4. Go to http://localhost:8091
