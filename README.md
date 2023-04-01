@@ -17,6 +17,8 @@ menu items at a restaurant.
 ```
 AUTH0_AUDIENCE=your-auth0-identifier
 JWT_ISSUER_URI=your-jwt-issuer-uri
+AUTH0_CLIENT_ID=your-auth0-clientid
+AUTH0_CLIENT_SECRET=your-auth0-client-secret
 ```
 
 3. Run the application

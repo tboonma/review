@@ -3,6 +3,7 @@ package ku.review.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -24,15 +25,17 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable()
                 .authorizeRequests()
+                .mvcMatchers(HttpMethod.GET, "/api/review")
+                .hasAuthority("SCOPE_read:reviews")
+                .mvcMatchers(HttpMethod.POST, "/api/review")
+                .hasAuthority("SCOPE_create:reviews")
                 .anyRequest()
                 .authenticated()
 
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-
 
                 // use oauth as a resource server to do jwt validation
                 .and()
